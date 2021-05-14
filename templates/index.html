@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stroke Prediction</title>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            input[type=text], select, textarea {
+                width: 100%; /* Full width */
+                padding: 10px; /* Some padding */  
+                border: 1px solid #ccc; /* Gray border */
+                border-radius: 4px; /* Rounded borders */
+                box-sizing: border-box; /* Make sure that padding and width stays in place */
+                margin-top: 5px; /* Add a top margin */
+                margin-bottom: 10px; /* Bottom margin */
+                resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+            }
+
+            /* Style the submit button with a specific background color etc */
+            input[type=submit] {
+                background-color: #04AA6D;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            /* When moving the mouse over the submit button, add a darker green color */
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+            /* Add a background color and some padding around the form */
+            .container {
+                margin-left: 20%;
+                margin-right: 20%;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            body {
+                background-color: #bdc3c7;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form action="{{ url_for('predict')}}" method="post">
+              <h1>Stroke Prediction</h1>
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select a Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>              
+              <label for="age">Age</label>
+              <input type="text" id="age" name="age" placeholder="Enter your Age.." required>
+              <label for="hypertension">Do you have Hypertension?</label>
+              <select id="hypertension" name="hypertension" required>
+                <option value="">Select an Option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select> 
+              <label for="heart_disease">Do you have a Heart Disease?</label>
+              <select id="heart_disease" name="heart_disease" required>
+                <option value="">Select an Option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select> 
+              <label for="married">Marriage Status</label>
+              <select id="married" name="married" required>
+                <option value="">Select an Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select> 
+              <label for="work_type">Work Type</label>
+              <select id="work_type" name="work_type" required>
+                <option value="">Select an Option</option>
+                <option value="Private">Private</option>
+                <option value="Self_employed">Self Employed</option>
+                <option value="Govt_job">Govt job</option>
+                <option value="children">Children</option>
+                <option value="Never_worked">Never Worked</option>
+              </select> 
+              <label for="residence">Residence Type</label>
+              <select id="residence" name="residence" required>
+                <option value="">Select an Option</option>
+                <option value="Urban">Urban</option>
+                <option value="Rural">Rural</option>
+              </select>
+              <label for="avg_glucose_level">Glucose Level</label>
+              <input type="text" id="avg_glucose_level" name="avg_glucose_level" placeholder="Enter your Glucose Level" required>
+              <label for="bmi">Body Mass Index(BMI)</label>
+              <input type="text" id="bmi" name="bmi" placeholder="Enter your BMI.." required> 
+              <label for="smoke_status">Smoke Status</label>
+              <select id="smoke_status" name="smoke_status" required>
+                <option value="">Select an Option</option>
+                <option value="formerly_smoked">Formerly Smoked</option>
+                <option value="never_smoked">Never Smoked</option>
+                <option value="smokes">Smokes</option>
+                <option value="Unknown">Unknown</option>
+              </select> 
+              <input type="submit" value="Submit">
+            </form>
+            <br><h3>{{ prediction_text }}<h3>
+          </div>
+    </body>
+</html>
